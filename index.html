@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>AI Glasses Store</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#0f172a;
+    color:#fff;
+    margin:0;
+}
+header{
+    background:#020617;
+    padding:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+h1{margin:0;}
+.cart{
+    cursor:pointer;
+}
+.container{
+    padding:40px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+.card{
+    background:#020617;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 0 20px rgba(0,0,0,0.4);
+}
+.card img{
+    width:100%;
+    border-radius:10px;
+}
+.card h3{
+    margin:15px 0 5px;
+}
+.price{
+    font-size:18px;
+    color:#38bdf8;
+}
+button{
+    width:100%;
+    padding:12px;
+    background:#38bdf8;
+    border:none;
+    border-radius:8px;
+    color:#000;
+    font-size:16px;
+    margin-top:10px;
+    cursor:pointer;
+}
+button:hover{
+    background:#0ea5e9;
+}
+
+/* CART MODAL */
+#cartModal{
+    position:fixed;
+    top:0;left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.7);
+    display:none;
+    justify-content:center;
+    align-items:center;
+}
+.cartBox{
+    background:#020617;
+    width:90%;
+    max-width:400px;
+    padding:20px;
+    border-radius:12px;
+}
+.cartItem{
+    display:flex;
+    justify-content:space-between;
+    margin:10px 0;
+}
+.total{
+    font-size:20px;
+    margin-top:15px;
+}
+.close{
+    background:#ef4444;
+    color:#fff;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>AI Glasses Store</h1>
+<div class="cart" onclick="openCart()">🛒 Корзина (<span id="cartCount">0</span>)</div>
+</header>
+
+<div class="container">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f" />
+<h3>Vision Pro X</h3>
+<p>Очки с ИИ, камерой и голосовым управлением</p>
+<div class="price">$299</div>
+<button onclick="addToCart('Vision Pro X',299)">Купить</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8" />
+<h3>Smart Glass AI</h3>
+<p>Запись видео, перевод речи, навигация</p>
+<div class="price">$249</div>
+<button onclick="addToCart('Smart Glass AI',249)">Купить</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1503602642458-232111445657" />
+<h3>Neo Vision</h3>
+<p>ИИ-ассистент + AR дисплей</p>
+<div class="price">$349</div>
+<button onclick="addToCart('Neo Vision',349)">Купить</button>
+</div>
+
+</div>
+
+<!-- CART -->
+<div id="cartModal">
+<div class="cartBox">
+<h2>Корзина</h2>
+<div id="cartItems"></div>
+<div class="total">Итого: $<span id="totalPrice">0</span></div>
+<button onclick="checkout()">Оформить заказ</button>
+<button class="close" onclick="closeCart()">Закрыть</button>
+</div>
+</div>
+
+<script>
+let cart = [];
+
+function addToCart(name,price){
+    cart.push({name,price});
+    document.getElementById("cartCount").innerText = cart.length;
+    alert("Товар добавлен в корзину");
+}
+
+function openCart(){
+    let itemsDiv = document.getElementById("cartItems");
+    itemsDiv.innerHTML="";
+    let total=0;
+
+    cart.forEach((item,index)=>{
+        total+=item.price;
+        itemsDiv.innerHTML += `
+        <div class="cartItem">
+        <span>${item.name}</span>
+        <span>$${item.price}</span>
+        </div>`;
+    });
+
+    document.getElementById("totalPrice").innerText = total;
+    document.getElementById("cartModal").style.display="flex";
+}
+
+function closeCart(){
+    document.getElementById("cartModal").style.display="none";
+}
+
+function checkout(){
+    if(cart.length===0){
+        alert("Корзина пуста");
+        return;
+    }
+    alert("Заказ оформлен! (Заглушка оплаты)");
+    cart=[];
+    document.getElementById("cartCount").innerText=0;
+    closeCart();
+}
+</script>
+
+</body>
+  </html>
