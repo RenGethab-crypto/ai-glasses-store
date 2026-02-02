@@ -2,187 +2,280 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>AI Glasses Store</title>
+<title>Ray-Ban AI Glasses</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body{
-    font-family: Arial, sans-serif;
-    background:#0f172a;
-    color:#fff;
-    margin:0;
-}
-header{
-    background:#020617;
-    padding:20px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-h1{margin:0;}
-.cart{
-    cursor:pointer;
-}
-.container{
-    padding:40px;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
-}
-.card{
-    background:#020617;
-    padding:20px;
-    border-radius:12px;
-    box-shadow:0 0 20px rgba(0,0,0,0.4);
-}
-.card img{
-    width:100%;
-    border-radius:10px;
-}
-.card h3{
-    margin:15px 0 5px;
-}
-.price{
-    font-size:18px;
-    color:#38bdf8;
-}
-button{
-    width:100%;
-    padding:12px;
-    background:#38bdf8;
-    border:none;
-    border-radius:8px;
-    color:#000;
-    font-size:16px;
-    margin-top:10px;
-    cursor:pointer;
-}
-button:hover{
-    background:#0ea5e9;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+scroll-behavior:smooth;
 }
 
-/* CART MODAL */
-#cartModal{
-    position:fixed;
-    top:0;left:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.7);
-    display:none;
-    justify-content:center;
-    align-items:center;
+body{
+background:#0a0a0a;
+color:#fff;
 }
-.cartBox{
-    background:#020617;
-    width:90%;
-    max-width:400px;
-    padding:20px;
-    border-radius:12px;
+
+/* ---------- HERO ---------- */
+
+.hero{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:40px;
+background:linear-gradient(135deg,#020617,#020617);
 }
-.cartItem{
-    display:flex;
-    justify-content:space-between;
-    margin:10px 0;
+
+.hero h1{
+font-size:48px;
+margin-bottom:15px;
+animation:fadeUp 1s ease forwards;
 }
-.total{
-    font-size:20px;
-    margin-top:15px;
+
+.hero p{
+max-width:600px;
+font-size:18px;
+opacity:0.8;
+animation:fadeUp 1.4s ease forwards;
 }
-.close{
-    background:#ef4444;
-    color:#fff;
+
+.hero button{
+margin-top:30px;
+padding:16px 40px;
+font-size:18px;
+border:none;
+border-radius:50px;
+background:#38bdf8;
+color:#000;
+cursor:pointer;
+transition:0.3s;
+animation:pulse 2s infinite;
+}
+
+.hero button:hover{
+transform:scale(1.1);
+background:#0ea5e9;
+}
+
+/* ---------- SECTIONS ---------- */
+
+section{
+padding:80px 20px;
+max-width:1100px;
+margin:auto;
+}
+
+h2{
+text-align:center;
+margin-bottom:40px;
+font-size:36px;
+}
+
+/* ---------- FEATURES ---------- */
+
+.features{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.feature{
+background:#020617;
+padding:30px;
+border-radius:20px;
+text-align:center;
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+
+.feature.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* ---------- PRODUCT ---------- */
+
+.product{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+align-items:center;
+}
+
+.product img{
+width:100%;
+border-radius:20px;
+}
+
+.price{
+font-size:28px;
+color:#38bdf8;
+margin:20px 0;
+}
+
+.buy-btn{
+padding:14px 35px;
+border:none;
+border-radius:40px;
+background:#38bdf8;
+font-size:18px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.buy-btn:hover{
+transform:scale(1.1);
+background:#0ea5e9;
+}
+
+/* ---------- FORM ---------- */
+
+form{
+max-width:500px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+input{
+padding:14px;
+border-radius:10px;
+border:none;
+font-size:16px;
+}
+
+form button{
+padding:14px;
+border:none;
+border-radius:30px;
+background:#38bdf8;
+font-size:18px;
+cursor:pointer;
+transition:0.3s;
+}
+
+form button:hover{
+background:#0ea5e9;
+transform:scale(1.05);
+}
+
+/* ---------- FOOTER ---------- */
+
+footer{
+text-align:center;
+padding:40px;
+background:#020617;
+opacity:0.7;
+}
+
+/* ---------- ANIMATIONS ---------- */
+
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(40px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes pulse{
+0%{box-shadow:0 0 0 0 rgba(56,189,248,0.7);}
+70%{box-shadow:0 0 0 25px rgba(56,189,248,0);}
+100%{box-shadow:0 0 0 0 rgba(56,189,248,0);}
+}
+
+/* ---------- MOBILE ---------- */
+
+@media(max-width:800px){
+.product{
+grid-template-columns:1fr;
+}
+.hero h1{
+font-size:34px;
+}
 }
 </style>
 </head>
 
 <body>
 
-<header>
-<h1>AI Glasses Store</h1>
-<div class="cart" onclick="openCart()">🛒 Корзина (<span id="cartCount">0</span>)</div>
-</header>
+<!-- HERO -->
+<div class="hero">
+<h1>Ray-Ban Smart Glasses AI</h1>
+<p>Умные очки с искусственным интеллектом, камерой, переводчиком и голосовым управлением</p>
+<button onclick="scrollToForm()">Заказать сейчас</button>
+</div>
 
-<div class="container">
+<!-- FEATURES -->
+<section>
+<h2>Возможности</h2>
+<div class="features">
+<div class="feature">📸 Камера 12 МП</div>
+<div class="feature">🧠 Встроенный AI ассистент</div>
+<div class="feature">🎙 Голосовое управление</div>
+<div class="feature">🌍 Переводчик языков</div>
+<div class="feature">📡 Bluetooth и Wi-Fi</div>
+<div class="feature">🔋 До 8 часов работы</div>
+</div>
+</section>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f" />
-<h3>Vision Pro X</h3>
-<p>Очки с ИИ, камерой и голосовым управлением</p>
+<!-- PRODUCT -->
+<section>
+<div class="product">
+<img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f">
+<div>
+<h2>Ray-Ban AI Glasses</h2>
+<p>Инновационные очки нового поколения для жизни, работы и путешествий.</p>
 <div class="price">$299</div>
-<button onclick="addToCart('Vision Pro X',299)">Купить</button>
+<button class="buy-btn" onclick="scrollToForm()">Купить</button>
 </div>
+</div>
+</section>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8" />
-<h3>Smart Glass AI</h3>
-<p>Запись видео, перевод речи, навигация</p>
-<div class="price">$249</div>
-<button onclick="addToCart('Smart Glass AI',249)">Купить</button>
-</div>
+<!-- FORM -->
+<section id="order">
+<h2>Оставить заявку</h2>
+<form onsubmit="sendOrder(event)">
+<input type="text" placeholder="Ваше имя" required>
+<input type="tel" placeholder="Телефон" required>
+<input type="email" placeholder="Email" required>
+<button type="submit">Отправить заявку</button>
+</form>
+</section>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1503602642458-232111445657" />
-<h3>Neo Vision</h3>
-<p>ИИ-ассистент + AR дисплей</p>
-<div class="price">$349</div>
-<button onclick="addToCart('Neo Vision',349)">Купить</button>
-</div>
-
-</div>
-
-<!-- CART -->
-<div id="cartModal">
-<div class="cartBox">
-<h2>Корзина</h2>
-<div id="cartItems"></div>
-<div class="total">Итого: $<span id="totalPrice">0</span></div>
-<button onclick="checkout()">Оформить заказ</button>
-<button class="close" onclick="closeCart()">Закрыть</button>
-</div>
-</div>
+<footer>
+© 2026 Ray-Ban AI Store
+</footer>
 
 <script>
-let cart = [];
-
-function addToCart(name,price){
-    cart.push({name,price});
-    document.getElementById("cartCount").innerText = cart.length;
-    alert("Товар добавлен в корзину");
+function scrollToForm(){
+document.getElementById("order").scrollIntoView({behavior:"smooth"});
 }
 
-function openCart(){
-    let itemsDiv = document.getElementById("cartItems");
-    itemsDiv.innerHTML="";
-    let total=0;
-
-    cart.forEach((item,index)=>{
-        total+=item.price;
-        itemsDiv.innerHTML += `
-        <div class="cartItem">
-        <span>${item.name}</span>
-        <span>$${item.price}</span>
-        </div>`;
-    });
-
-    document.getElementById("totalPrice").innerText = total;
-    document.getElementById("cartModal").style.display="flex";
+/* animation on scroll */
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
 }
+});
+});
 
-function closeCart(){
-    document.getElementById("cartModal").style.display="none";
-}
+document.querySelectorAll(".feature").forEach(el=>{
+observer.observe(el);
+});
 
-function checkout(){
-    if(cart.length===0){
-        alert("Корзина пуста");
-        return;
-    }
-    alert("Заказ оформлен! (Заглушка оплаты)");
-    cart=[];
-    document.getElementById("cartCount").innerText=0;
-    closeCart();
+/* fake submit */
+function sendOrder(e){
+e.preventDefault();
+alert("Заявка отправлена! Мы свяжемся с вами.");
 }
 </script>
 
 </body>
-  </html>
+</html>
