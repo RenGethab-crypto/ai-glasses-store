@@ -6,13 +6,83 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial, sans-serif;
-scroll-behavior:smooth;
+/* ===== BASE ===== */
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color:#fff;
 }
+
+/* ===== CONTAINER ===== */
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:40px 20px;
+}
+
+/* ===== PRODUCT CARD ===== */
+.product{
+  display:flex;
+  flex-wrap:wrap;
+  gap:40px;
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(12px);
+  border-radius:25px;
+  padding:40px;
+  box-shadow:0 0 40px rgba(0,0,0,0.4);
+  align-items:center;
+}
+
+.product img{
+  width:100%;
+  max-width:420px;
+  border-radius:20px;
+}
+
+/* ===== TEXT ===== */
+.product h1{
+  font-size:36px;
+  margin-bottom:10px;
+}
+
+.product p{
+  font-size:18px;
+  line-height:1.5;
+  opacity:0.9;
+}
+
+.price{
+  font-size:32px;
+  font-weight:bold;
+  margin:20px 0;
+}
+
+/* ===== BUTTON ===== */
+.buy-btn{
+  background:#00ffcc;
+  color:#000;
+  padding:15px 40px;
+  font-size:18px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.buy-btn:hover{
+  background:#00ccaa;
+  transform:scale(1.05);
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:768px){
+  .product{
+    flex-direction:column;
+    text-align:center;
+  }
+}
+</style>
 
   body {
   background: linear-gradient(135deg, #0f2027, #203a43, #2c5364) !important;
@@ -232,14 +302,19 @@ font-size:34px;
 
 <!-- PRODUCT -->
 <section>
-<div class="product">
-<img src="glasses.jpg" alt="AI очки">
-<div>
-<h2>Ray-Ban AI Glasses</h2>
-<p>Инновационные очки нового поколения для жизни, работы и путешествий.</p>
-<div class="price">12 000 ₽</div>
-<button class="buy-btn" onclick="scrollToForm()">Купить</button>
-</div>
+<div class="container">
+  <div class="product">
+
+    <img src="glasses.jpg" alt="AI очки">
+
+    <div>
+      <h1>AI Smart Glasses</h1>
+      <p>Инновационные умные очки с камерой и искусственным интеллектом.</p>
+      <div class="price">12 000 ₽</div>
+      <button class="buy-btn" onclick="scrollToForm()">Купить</button>
+    </div>
+
+  </div>
 </div>
 </section>
 
