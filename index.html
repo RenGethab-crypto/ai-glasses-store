@@ -1,4 +1,3 @@
-<!-- VERSION 999 -->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -118,14 +117,15 @@ input,button{
 
 </div>
 <script>
- const TELEGRAM_BOT_TOKEN = "7838340633:AAHLoQBi9lDxt8Cit7ZKETixJYyf3vSIDSM";
-const CHAT_ID = "1518053105"; 
+const TELEGRAM_BOT_TOKEN = "7838340633:AAHLoQBi9lDxt8Cit7ZKETixJYyf3vSIDSM";
+const CHAT_ID = "1518053105";
+
 async function sendOrder(event) {
   event.preventDefault();
 
-  const name = event.target[0].value;
-  const phone = event.target[1].value;
-  const email = event.target[2].value;
+  const name = document.querySelector('#order input[type="text"]').value;
+  const phone = document.querySelector('#order input[type="tel"]').value;
+  const email = document.querySelector('#order input[type="email"]').value;
 
   const text = `
 🕶 Новая заявка с сайта
@@ -136,7 +136,7 @@ Email: ${email}
 Цена: 12 000 ₽
 `;
 
-  const url = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`;
+  const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
 
   await fetch(url, {
     method: "POST",
@@ -150,7 +150,7 @@ Email: ${email}
   });
 
   alert("Заявка отправлена!");
-  event.target.reset();
+  document.getElementById("order").reset();
 }
 </script>
 </body>
