@@ -94,7 +94,8 @@ input,button{
 
 </head>
 <body>
-
+const TELEGRAM_BOT_TOKEN = "7838340633:AAHLoQBi9lDxt8Cit7ZKETixJYyf3vSIDSM";
+const CHAT_ID = "1518053105";
 <div class="container">
 
 <div class="product">
@@ -108,7 +109,7 @@ input,button{
   </div>
 </div>
 
-<form id="order">
+<form id="order" onsubmit="sendOrder(event)">
 <h2>Оставить заявку</h2>
 <input type="text" placeholder="Ваше имя" required>
 <input type="tel" placeholder="Телефон" required>
@@ -117,6 +118,41 @@ input,button{
 </form>
 
 </div>
+<script>
+ const TELEGRAM_BOT_TOKEN = "7838340633:AAHLoQBi9lDxt8Cit7ZKETixJYyf3vSIDSM";
+const CHAT_ID = "1518053105"; 
+async function sendOrder(event) {
+  event.preventDefault();
 
+  const name = event.target[0].value;
+  const phone = event.target[1].value;
+  const email = event.target[2].value;
+
+  const text = `
+🕶 Новая заявка с сайта
+Имя: ${name}
+Телефон: ${phone}
+Email: ${email}
+Товар: AI Smart Glasses
+Цена: 12 000 ₽
+`;
+
+  const url = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`;
+
+  await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      chat_id: CHAT_ID,
+      text: text
+    })
+  });
+
+  alert("Заявка отправлена!");
+  event.target.reset();
+}
+</script>
 </body>
 </html>
