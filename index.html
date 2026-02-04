@@ -109,9 +109,10 @@ input,button{
 
 <form id="order" onsubmit="sendOrder(event)">
 <h2>Оставить заявку</h2>
-<input type="text" placeholder="Ваше имя" required>
+<input type="text" placeholder="фамилия Имя Отчество" required>
 <input type="tel" placeholder="Телефон" required>
 <input type="email" placeholder="Email" required>
+<input type="text" placeholder="Адрес доставки (город, улица, дом, квартира)" required>  
 <button type="submit" class="buy-btn">Отправить заявку</button>
 </form>
 
@@ -126,12 +127,13 @@ async function sendOrder(event) {
   const name = document.querySelector('#order input[type="text"]').value;
   const phone = document.querySelector('#order input[type="tel"]').value;
   const email = document.querySelector('#order input[type="email"]').value;
-
+  const address = document.querySelector('#order input[type="email"]').value;
   const text = `
 🕶 Новая заявка с сайта
-Имя: ${name}
+ФИО: ${name}
 Телефон: ${phone}
 Email: ${email}
+Адрес: ${address}
 Товар: AI Smart Glasses
 Цена: 12 000 ₽
 `;
