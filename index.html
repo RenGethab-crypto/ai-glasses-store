@@ -127,10 +127,37 @@ position:absolute;
 left:0;
 top:0;
 }
-  
+.timer{
+  font-size:18px;
+  margin-bottom:25px;
+  color:#ffd700;
+}  
 </style>
 
 </head>
+ <script>
+function startTimer(duration) {
+  let timer = duration, hours, minutes, seconds;
+  setInterval(function () {
+    hours = parseInt(timer / 3600, 10);
+    minutes = parseInt((timer % 3600) / 60, 10);
+    seconds = parseInt(timer % 60, 10);
+
+    hours = hours < 10 ? "0" + hours : hours;
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+    document.getElementById("countdown").textContent =
+      hours + ":" + minutes + ":" + seconds;
+
+    if (--timer < 0) {
+      timer = 3600 * 3; // перезапуск на 3 часа
+    }
+  }, 1000);
+}
+
+startTimer(3600 * 3);
+</script> 
 <body>
 
 <div class="container">
@@ -161,7 +188,10 @@ top:0;
    class="buy-btn"
    style="display:block; text-align:center; margin-top:15px;">
   Оплатить 130 USDT
-
+<div class="timer">
+  До конца акции осталось:
+  <span id="countdown"></span>
+</div>
 </a>
   <p style="font-size:14px; opacity:0.8; margin-top:10px;">
 Доставка по России и СНГ • Гарантия качества
