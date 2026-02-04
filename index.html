@@ -90,17 +90,28 @@ input,button{
     text-align:center;
   }
 }
- .features{
-  list-style:none;
-  padding:0;
-  margin:20px 0;
-  font-size:18px;
-  line-height:1.6;
+.features{
+list-style:none;
+padding:0;
+margin:20px 0;
 }
 
 .features li{
-  margin-bottom:8px;
-} 
+color:#ffffff;
+font-size:18px;
+margin-bottom:12px;
+position:relative;
+padding-left:26px;
+}
+
+.features li::before{
+content:"✔";
+color:#00ffd0;
+position:absolute;
+left:0;
+top:0;
+}
+  
 </style>
 
 </head>
@@ -130,6 +141,9 @@ input,button{
    class="buy-btn"
    style="display:block; text-align:center; margin-top:15px;">
   Оплатить 130 USDT
+  <p style="font-size:14px; opacity:0.8; margin-top:10px;">
+Доставка по России и СНГ • Гарантия качества
+</p>
 </a>  
   <p style="margin-top:20px; font-size:18px;">
   📞 Контактный телефон:
